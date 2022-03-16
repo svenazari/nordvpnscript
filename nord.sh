@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #Install NordVPN by using this command: sh <(curl -sSf https://downloads.nordcdn.com/apps/linux/install.sh)
+#Made by Sven Azari
 
 function loz {
   read -sp "Password for $(whoami): " passwd
