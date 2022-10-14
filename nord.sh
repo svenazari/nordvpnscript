@@ -8,7 +8,6 @@ function loz {
   read -sp "Password for $(whoami): " passwd
   echo "$passwd" | sudo -S echo " " > /tmp/test
   if [ $? -eq 0 ]; then
-    echo "$passwd" > /home/$(whoami)/.pass_nord.txt
     clear
     logo
   else
@@ -67,13 +66,7 @@ function main {
 
 function login {
   clear
-  FILE=/home/$(whoami)/.pass_nord.txt
-    if test -f "$FILE"; then
-    read line  < "$FILE"
-    echo "$line" | sudo -S nordvpn login --legacy
-  else
-    sudo nordvpn login --legacy
-  fi
+  echo "$passwd" | sudo -S nordvpn login --legacy
   echo " "
   echo "####"
   echo "####"
@@ -83,13 +76,7 @@ function login {
 
 function logout {
   clear
-  FILE=/home/$(whoami)/.pass_nord.txt
-    if test -f "$FILE"; then
-    read line  < "$FILE"
-    echo "$line" | sudo -S nordvpn logout
-  else
-    sudo nordvpn logout
-  fi
+  echo "$passwd" | sudo -S nordvpn logout
   echo " "
   echo "####"
   echo "####"
@@ -123,13 +110,7 @@ function connect {
 
 function jconnect {
   clear
-  FILE=/home/$(whoami)/.pass_nord.txt
-    if test -f "$FILE"; then
-    read line  < "$FILE"
-    echo "$line" | sudo -S nordvpn connect
-  else
-    sudo nordvpn connect
-  fi
+  echo "$passwd" | sudo -S nordvpn connect
   echo " "
   echo "####"
   echo "####"
@@ -138,24 +119,12 @@ function jconnect {
 }
 
 function country {
-  FILE=/home/$(whoami)/.pass_nord.txt
-    if test -f "$FILE"; then
-    read line  < "$FILE"
-    echo "$line" | sudo -S nordvpn countries
-  else
-    sudo nordvpn countries
-  fi
+  echo "$passwd" | sudo -S nordvpn countries
   echo " "
   echo "Select country: "
   read country
   clear
-  FILE=/home/$(whoami)/.pass_nord.txt
-    if test -f "$FILE"; then
-    read line  < "$FILE"
-    echo "$line" | sudo -S nordvpn connect $country
-  else
-    sudo nordvpn connect $country
-  fi
+  echo "$passwd" | sudo -S nordvpn connect $country
   echo " "
   echo "####"
   echo "####"
@@ -165,13 +134,7 @@ function country {
 
 function connectuk {
   clear
-  FILE=/home/$(whoami)/.pass_nord.txt
-    if test -f "$FILE"; then
-    read line  < "$FILE"
-    echo "$line" | sudo -S nordvpn connect United_Kingdom
-  else
-    sudo nordvpn connect United_Kingdom
-  fi
+  echo "$passwd" | sudo -S nordvpn connect United_Kingdom
   echo " "
   echo "####"
   echo "####"
@@ -181,13 +144,7 @@ function connectuk {
 
 function connectus {
   clear
-  FILE=/home/$(whoami)/.pass_nord.txt
-    if test -f "$FILE"; then
-    read line  < "$FILE"
-    echo "$line" | sudo -S nordvpn connect United_States
-  else
-    sudo nordvpn connect United_Kingdom
-  fi
+  echo "$passwd" | sudo -S nordvpn connect United_Statessudo nordvpn connect United_States
   echo " "
   echo "####"
   echo "####"
@@ -203,13 +160,7 @@ function bconnect {
 
 function disconnect {
   clear
-  FILE=/home/$(whoami)/.pass_nord.txt
-    if test -f "$FILE"; then
-    read line  < "$FILE"
-    echo "$line" | sudo -S nordvpn disconnect
-  else
-    sudo nordvpn disconnect
-  fi
+  echo "$passwd" | sudo -S nordvpn disconnect
   echo " "
   echo "####"
   echo "####"
@@ -219,13 +170,7 @@ function disconnect {
 
 function status {
   clear
-  FILE=/home/$(whoami)/.pass_nord.txt
-    if test -f "$FILE"; then
-    read line  < "$FILE"
-    echo "$line" | sudo -S nordvpn status
-  else
-    sudo nordvpn status
-  fi
+  echo "$passwd" | sudo -S nordvpn status
   echo " "
   echo "####"
   echo "####"
@@ -235,13 +180,7 @@ function status {
 
 function csecon {
   clear
-  FILE=/home/$(whoami)/.pass_nord.txt
-    if test -f "$FILE"; then
-    read line  < "$FILE"
-    echo "$line" | sudo -S nordvpn set cybersec on
-  else 
-    sudo nordvpn set cybersec on
-  fi
+  echo "$passwd" | sudo -S nordvpn set cybersec on
   echo " "
   echo "####"
   echo "####"
@@ -251,13 +190,7 @@ function csecon {
 
 function csecoff {
   clear
-  FILE=/home/$(whoami)/.pass_nord.txt
-    if test -f "$FILE"; then
-    read line  < "$FILE"
-    echo "$line" | sudo -S nordvpn set cybersec off
-  else
-    sudo nordvpn set cybersec off
-  fi
+  echo "$passwd" | sudo -S nordvpn set cybersec off
   echo " "
   echo "####"
   echo "####"
@@ -267,13 +200,7 @@ function csecoff {
 
 function kswitchon {
   clear
-  FILE=/home/$(whoami)/.pass_nord.txt
-    if test -f "$FILE"; then
-    read line  < "$FILE"
-    echo "$line" | sudo -S nordvpn set killswitch on
-  else
-    sudo nordvpn set killswitch on
-  fi
+  echo "$passwd" | sudo -S nordvpn set killswitch on
   echo " "
   echo "####"
   echo "####"
@@ -283,13 +210,7 @@ function kswitchon {
 
 function kswitchoff {
   clear
-  FILE=/home/$(whoami)/.pass_nord.txt
-    if test -f "$FILE"; then
-    read line  < "$FILE"
-    echo "$line" | sudo -S nordvpn set killswitch off
-  else
-    sudo nordvpn set killswitch off
-  fi
+  echo "$passwd" | sudo -S nordvpn set killswitch off
   echo " "
   echo "####"
   echo "####"
@@ -298,10 +219,6 @@ function kswitchoff {
 }
 
 function exi {
-  FILE=/home/$(whoami)/.pass_nord.txt
-  if test -f "$FILE"; then
-    rm "$FILE"
-  fi
   clear
   exit
 }
